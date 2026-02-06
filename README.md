@@ -172,17 +172,4 @@ Please cite appropriately if used in publications.
 
 For research collaboration, extensions, or clarification, please contact the authors via the corresponding publication.
 
----
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{quantummed-feddx,
-  title={Quantum-Enhanced Hybrid Deep Learning for Medical Image Diagnosis},
-  author={[Your Name]},
-  journal={[Journal Name]},
-  year={2026}
-}
-```
