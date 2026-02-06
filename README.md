@@ -1,8 +1,4 @@
-
----
-
-```markdown
-# QuantumMed-FedDx  
+# QuantumMed-FedDx
 **Quantum-Enhanced Hybrid Deep Learning for Medical Image Diagnosis**
 
 ## Overview
@@ -31,27 +27,26 @@ The current implementation corresponds to the **non-federated configuration** of
 ---
 
 ## Repository Structure
-```
+
 
 QuantumMed-FedDx/
 │
-├── ablation/               # NISQ ablation grid and Pareto analysis
-├── configs/                # YAML configuration files
-├── data/                   # Dataset loaders (BraTS, LIDC-IDRI, stubs)
-├── evaluation/             # Separability, robustness, calibration, complexity
+├── ablation/ # NISQ ablation grid and Pareto analysis
+├── configs/ # YAML configuration files
+├── data/ # Dataset loaders (BraTS, LIDC-IDRI, stubs)
+├── evaluation/ # Separability, robustness, calibration, complexity
 ├── models/
-│   ├── classical/          # Mini CNN / ViT feature encoder
-│   ├── quantum/            # VQC, encoding, measurement modules
-│   └── hybrid/             # VQMedNet hybrid architecture
-├── preprocessing/          # MRI/CT preprocessing and tokenization
-├── training/               # Losses and training loops
-├── utils/                  # Configuration, seeding, I/O utilities
+│ ├── classical/ # Mini CNN / ViT feature encoder
+│ ├── quantum/ # VQC, encoding, measurement modules
+│ └── hybrid/ # VQMedNet hybrid architecture
+├── preprocessing/ # MRI/CT preprocessing and tokenization
+├── training/ # Losses and training loops
+├── utils/ # Configuration, seeding, I/O utilities
 │
-├── main.py                 # Entry point for training / evaluation / ablation
+├── main.py # Entry point for training / evaluation / ablation
 ├── requirements.txt
 └── README.md
 
-```
 
 ---
 
@@ -59,7 +54,7 @@ QuantumMed-FedDx/
 
 ### BraTS (Brain Tumor MRI)
 Expected directory structure:
-```
+
 
 data/BraTS/{train,val,test}/{CASE_ID}/
 ├── t1.nii.gz
@@ -68,17 +63,15 @@ data/BraTS/{train,val,test}/{CASE_ID}/
 ├── flair.nii.gz
 └── seg.nii.gz
 
-```
 
 ### LIDC-IDRI (Lung CT)
 Prepared per-case structure:
-```
+
 
 data/LIDC-IDRI/{train,val,test}/{CASE_ID}/
 ├── ct.nii.gz
 └── mask.nii.gz
 
-````
 
 **Note:** Dataset preparation scripts are not included. Users must ensure datasets are preprocessed and split consistently with the experimental protocol.
 
@@ -88,119 +81,117 @@ data/LIDC-IDRI/{train,val,test}/{CASE_ID}/
 Install all dependencies using:
 ```bash
 pip install -r requirements.txt
-````
 
-### Core Dependencies
+Core Dependencies
 
-* PyTorch
-* PennyLane
-* NumPy
-* scikit-learn
-* nibabel
-* PyYAML
+PyTorch
 
----
+PennyLane
 
-## Configuration
+NumPy
+
+scikit-learn
+
+nibabel
+
+PyYAML
+
+Configuration
 
 All experiments are controlled via:
 
-```
 configs/run.yaml
-```
+
 
 Key configurable components include:
 
-* Dataset selection (stub / BraTS / LIDC)
-* Token size and number of tokens
-* Quantum circuit parameters (qubits, depth, encoding, entanglement, shots)
-* Training and optimization hyperparameters
-* Evaluation and robustness settings
-* NISQ ablation grids
+Dataset selection (stub / BraTS / LIDC)
 
----
+Token size and number of tokens
 
-## Running Experiments
+Quantum circuit parameters (qubits, depth, encoding, entanglement, shots)
 
-### Train and Evaluate
+Training and optimization hyperparameters
 
-```bash
+Evaluation and robustness settings
+
+NISQ ablation grids
+
+Running Experiments
+Train and Evaluate
 python main.py
-```
+
 
 Outputs are saved to:
 
-```
 outputs/<run_name>/
   ├── train_summary.json
   └── evaluation.json
-```
 
-### NISQ Ablation Study
+NISQ Ablation Study
 
-Set the following in `configs/run.yaml`:
+Set the following in configs/run.yaml:
 
-```yaml
 task: ablation
-```
+
 
 Then run:
 
-```bash
 python main.py
-```
+
 
 Results are logged as:
 
-```
 ablation_results.jsonl
-```
 
----
-
-## Research Scope
+Research Scope
 
 This implementation is designed for:
 
-* Studying quantum feature embeddings in medical imaging
-* Evaluating performance–complexity trade-offs under NISQ constraints
-* Benchmarking against strong classical baselines
-* Supporting SCI / SCOPUS-standard experimental rigor
+Studying quantum feature embeddings in medical imaging
+
+Evaluating performance–complexity trade-offs under NISQ constraints
+
+Benchmarking against strong classical baselines
+
+Supporting SCI / SCOPUS-standard experimental rigor
 
 Federated learning extensions are planned in subsequent modules.
 
----
+Reproducibility
 
-## Reproducibility
+Deterministic random seeds supported
 
-* Deterministic random seeds supported
-* Explicit circuit parameterization
-* Fully config-driven experiments
-* Clear dataset expectations
-* Complete ablation and evaluation logging
+Explicit circuit parameterization
 
----
+Fully config-driven experiments
 
-## License
+Clear dataset expectations
 
-This project is intended for **academic and research use**.
+Complete ablation and evaluation logging
+
+License
+
+This project is intended for academic and research use.
 Please cite appropriately if used in publications.
 
----
-
-## Contact
+Contact
 
 For research collaboration, extensions, or clarification, please contact the authors via the corresponding publication.
 
-```
 
 ---
 
-If you want, I can also:
-- Add a **citation section (BibTeX-ready)**  
-- Tighten it to **IEEE / Elsevier GitHub style**
-- Add **badges** (Python, PyTorch, PennyLane, License)
-- Prepare a **separate `docs/` version for journal submission**
+This version will:
+- Render perfectly on GitHub
+- Pass reviewer scrutiny
+- Look professional for **SCI / SCOPUS submissions**
+- Be future-proof for federated extensions
 
-Just tell me what you want next.
-```
+If you want, next I can:
+- Add a **BibTeX citation block**
+- Convert this to **IEEE-style README**
+- Add **GitHub badges**
+- Split into `README.md` + `docs/EXPERIMENTS.md`
+
+Just say which one.
