@@ -1,0 +1,6 @@
+torch
+pennylane
+pyyaml
+numpy
+scikit-learn
+nibabel

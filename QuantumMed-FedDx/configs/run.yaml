@@ -1,0 +1,81 @@
+seed: 42
+device: auto
+task: train_eval        # train_eval | ablation
+output_dir: outputs/run1
+batch_size: 4
+
+dataset:
+  type: stub            # stub | brats | lidc
+  stub:
+    num_samples: 240
+    num_classes: 2
+    tokens_per_sample: 16
+    in_channels: 4
+    token_size: 32
+  brats:
+    root_dir: data/BraTS
+    token_size: 32
+    stride: 32
+    max_tokens: 16
+    context_slices: 1
+  lidc:
+    root_dir: data/LIDC-IDRI
+    token_size: 32
+    stride: 32
+    max_tokens: 16
+    context_slices: 1
+
+model:
+  num_classes: 2
+  q_qubits: 6
+  d_out: 6
+  token_size: 32
+  in_channels: 4
+  head_hidden: 64
+  dropout: 0.1
+  encoder_type: cnn
+
+quantum:
+  depth: 2
+  entanglement: ring
+  encoding_type: angle_reupload
+  shots: 512
+  measure_basis: ["Z"]
+  measure_all_qubits: true
+
+training:
+  epochs: 10
+  lr_classical: 0.001
+  lr_quantum: 0.0003
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  early_stop_patience: 3
+  shot_schedule:
+    - [1, 256]
+    - [5, 512]
+    - [8, 1024]
+
+loss:
+  use_focal: true
+  focal_gamma: 2.0
+  emb_loss_weight: 0.1
+
+evaluation:
+  separability:
+    knn_k: 5
+    reducer: none
+  robustness:
+    noise_std: 0.05
+    intensity_scale: 0.10
+    blur_kernel: 0
+  calibration:
+    n_bins: 15
+
+ablation:
+  out_jsonl: outputs/ablation_results.jsonl
+  grid:
+    q_list: [4, 6, 8]
+    depth_list: [1, 2, 3]
+    enc_list: ["angle", "angle_reupload"]
+    ent_list: ["nn", "ring"]
+    shots_list: [256, 512]
