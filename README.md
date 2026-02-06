@@ -26,24 +26,25 @@ The current implementation corresponds to the **non-federated configuration** of
 
 ---
 
-## Repository Structure
 
+
+## Repository Structure
 
 QuantumMed-FedDx/
 │
-├── ablation/ # NISQ ablation grid and Pareto analysis
-├── configs/ # YAML configuration files
-├── data/ # Dataset loaders (BraTS, LIDC-IDRI, stubs)
-├── evaluation/ # Separability, robustness, calibration, complexity
+├── ablation/               # NISQ ablation grid and Pareto analysis
+├── configs/                # YAML configuration files
+├── data/                   # Dataset loaders (BraTS, LIDC-IDRI, stubs)
+├── evaluation/             # Separability, robustness, calibration, complexity
 ├── models/
-│ ├── classical/ # Mini CNN / ViT feature encoder
-│ ├── quantum/ # VQC, encoding, measurement modules
-│ └── hybrid/ # VQMedNet hybrid architecture
-├── preprocessing/ # MRI/CT preprocessing and tokenization
-├── training/ # Losses and training loops
-├── utils/ # Configuration, seeding, I/O utilities
+│   ├── classical/          # Mini CNN / ViT feature encoder
+│   ├── quantum/            # VQC, encoding, measurement modules
+│   └── hybrid/             # VQMedNet hybrid architecture
+├── preprocessing/          # MRI/CT preprocessing and tokenization
+├── training/               # Losses and training loops
+├── utils/                  # Configuration, seeding, I/O utilities
 │
-├── main.py # Entry point for training / evaluation / ablation
+├── main.py                 # Entry point for training / evaluation / ablation
 ├── requirements.txt
 └── README.md
 
